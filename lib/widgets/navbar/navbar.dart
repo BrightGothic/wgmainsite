@@ -23,34 +23,50 @@ class _NavigationBarWebState extends State<NavigationBarWeb> {
         mainAxisSize: MainAxisSize.max,
         children: [
           Image(image: AssetImage('assets/logo_hd.png')),
-          Column(
-            crossAxisAlignment : CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.end,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Container(
-                height : 1,
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment : CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Container(
+                    height : 1,
+                  ),
+                  NavigationItem(
+                    title: 'Home',
+                    routeName: routeHome,
+                  ),
+                  Container(
+                    height : 1,
+                  ),
+                  Divider(
+                      color: Color(0xFF424242),
+                      height : 2
+                  ),
+                  NavigationItemHelp(
+                    title: 'Help',
+                    routeName: routeHelp,
+                  ),
+                  Container(
+                    height : 1,
+                  ),
+                  Divider(
+                      color: Color(0xFF424242),
+                      height : 2
+                  ),
+                  NavigationItem(
+                    title: 'Scoreboard',
+                    routeName: routeScoreboard,
+                  ),
+                ],
               ),
-              NavigationItem(
-                title: 'Home',
-                routeName: routeHome,
-              ),
-              Container(
-                height : 1,
-              ),
-              NavigationItemHelp(
-                title: 'Help',
-                routeName: routeHelp,
-              ),
-              Container(
-                height : 1,
-              ),
-              NavigationItem(
-                title: 'Scoreboard',
-                routeName: routeScoreboard,
-              ),
-            ],
+            ),
           ),
+          Container(
+            height : 10,
+            color : appTheme.scaffoldBackgroundColor
+          )
         ],
       ),
     );

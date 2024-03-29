@@ -28,7 +28,7 @@ class _NavigationItemHelpSubsectionState extends State<NavigationItemHelpSubsect
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-            border: Border.all(color: Colors.red)
+            //border: Border.all(color: Colors.red)
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical : 15),

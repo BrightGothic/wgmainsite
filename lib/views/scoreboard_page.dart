@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wgmainsite/widgets/apptheme.dart';
 import 'package:wgmainsite/widgets/flipdownclock.dart';
+import 'package:wgmainsite/widgets/scoreboard/linechart.dart';
 
 class ScoreboardPage extends StatefulWidget {
   const ScoreboardPage({Key? key}) : super(key: key);
@@ -20,10 +21,11 @@ class _ScoreboardPageState extends State<ScoreboardPage> {
             crossAxisAlignment :CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              Flipdownclock(),
               Text(
                 "Scoreboard page",
               ),
+              Expanded(child: LineChartSample6()),
+
             ],
           ),
         ),

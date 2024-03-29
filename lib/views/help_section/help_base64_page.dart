@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wgmainsite/constants/page_texts.dart';
 import 'package:wgmainsite/widgets/apptheme.dart';
 import 'package:wgmainsite/widgets/countdowntimer.dart';
 
@@ -19,10 +20,15 @@ class _HelpBase64PageState extends State<HelpBase64Page> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              CountDownTimer(),
-              const Text(
-                "base64 page",
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left : 20.0, right: 20),
+                    child: PageTexts().csstext,
+                  ),
+                ),
               ),
+
             ],
           ),
         ),

@@ -10,7 +10,6 @@ class Flipdownclock extends StatefulWidget {
 
 class _FlipdownclockState extends State<Flipdownclock> {
 
-  List timeLeft = [];
 
   List<int> remainingTimeToText(Duration duration) {
     int days = duration.inDays;
@@ -21,6 +20,7 @@ class _FlipdownclockState extends State<Flipdownclock> {
     return [days, hours, minutes, seconds];
   }
 
+
   bool listContainsValue(List list, int value) {
     for (var element in list) {
       if (element == value) {
@@ -30,39 +30,43 @@ class _FlipdownclockState extends State<Flipdownclock> {
     return false;
   }
 
-  timeRemaining(List weekdays, int startingHour, int endingHour) {
+  List<int> timeRemaining(List weekdays, int startingHour, int endingHour) {
     DateTime now = DateTime.now();
     bool timeIsSpecial = false;
-    for (var specificWeekday in weekdays) {
+    /*for (var specificWeekday in weekdays) {
       if (now.weekday == specificWeekday &&
           (now.hour >= startingHour && now.hour < endingHour)) {
         timeIsSpecial = true;
       }
-    }
+    }*/
     if (!timeIsSpecial) {
-      DateTime nextSpecialTime =
-      DateTime(now.year, now.month, now.day, startingHour);
+      DateTime nextSpecialTime = DateTime(now.year, now.month, now.day, startingHour);
       while (nextSpecialTime.isBefore(now) ||
           !listContainsValue(weekdays, nextSpecialTime.weekday)) {
         nextSpecialTime = nextSpecialTime.add(Duration(days: 1));
       }
       //return remainingTimeToText(nextSpecialTime.difference(now));
-      return remainingTimeToText(DateTime(2024, 4, 1).difference(now));
+      return remainingTimeToText(DateTime(2024, 4, 13).difference(now));
     } else {
-      return "";
+      return [0,0,0,0];
     }
   }
+
+
+  List? timeLeft;
+
+  Future<List<int>> callAsyncFetch() async {
+    timeLeft =  timeRemaining([5, 6, 7], 18, 22);
+    Future.delayed(Duration(seconds: 1));
+    return timeRemaining([5, 6, 7], 18, 22);
+  }
+
   @override
   void initState() {
     Timer.periodic(Duration(seconds: 1), (timer) {
       if (mounted == true) {
         setState(() {
           timeLeft = timeRemaining([5, 6, 7], 18, 22);
-          print(timeLeft);
-          print(timeLeft[0]);
-          print(timeLeft[1]);
-          print(timeLeft[2]);
-          print(timeLeft[3]);
         });
       }
     });
@@ -70,52 +74,61 @@ class _FlipdownclockState extends State<Flipdownclock> {
   }
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Row(
-        mainAxisAlignment : MainAxisAlignment.center,
-        children: [
-          Padding(
-              padding: const EdgeInsets.only(top: 64.0),
-              child: FlipWidget(
-                initialValue: timeLeft[0],
-                flipType: FlipType.middleFlip,
-                  itemStream:Stream<int>.periodic(const Duration(seconds: 86400), (count) => count * count).take(1000),
-                itemBuilder: (_, day) => _container(timeLeft[0].toString()),
-                flipDirection: AxisDirection.down
-              )
-          ),
-          Padding(
-              padding: const EdgeInsets.only(top: 64.0),
-              child: FlipWidget(
-                  initialValue: timeLeft[1],
-                  flipType: FlipType.middleFlip,
-                  itemStream:Stream<int>.periodic(const Duration(seconds: 3600), (count) => count * count).take(1000),
-                  itemBuilder: (_, day) => _container(timeLeft[1].toString()),
-                  flipDirection: AxisDirection.down
-              )
-          ),
-          Padding(
-              padding: const EdgeInsets.only(top: 64.0),
-              child: FlipWidget(
-                  initialValue: timeLeft[2],
-                  flipType: FlipType.middleFlip,
-                  itemStream: Stream<int>.periodic(const Duration(seconds: 60), (count) => count * count).take(1000),
-                  itemBuilder: (_, day) => _container(timeLeft[2].toString()),
-                  flipDirection: AxisDirection.down
-              )
-          ),
-          Padding(
-              padding: const EdgeInsets.only(top: 64.0),
-              child: FlipWidget(
-                  initialValue: timeLeft[3],
-                  flipType: FlipType.middleFlip,
-                  itemStream: Stream<int>.periodic(const Duration(seconds: 1), (count) => count * count).take(1000),
-                  itemBuilder: (_, day) => _container(timeLeft[3].toString()),
-                  flipDirection: AxisDirection.down
-              )
-          ),
-        ],
-      ),
+    return FutureBuilder<List<int>>(
+        future: callAsyncFetch(),
+        builder: (context, AsyncSnapshot<List<int>> snapshot) {
+          if (snapshot.hasData) {
+            return Center(
+              child: Row(
+                mainAxisAlignment : MainAxisAlignment.center,
+                children: [
+                  Padding(
+                      padding: const EdgeInsets.only(top: 5.0),
+                      child: FlipWidget(
+                          initialValue: snapshot.data![0],
+                          flipType: FlipType.middleFlip,
+                          itemStream:Stream<int>.periodic(const Duration(seconds: 86400), (count) => count * count).take(1000),
+                          itemBuilder: (_, day) => _container(timeLeft![0].toString()),
+                          flipDirection: AxisDirection.down
+                      )
+                  ),
+                  Padding(
+                      padding: const EdgeInsets.only(top: 5.0),
+                      child: FlipWidget(
+                          initialValue: snapshot.data![0],
+                          flipType: FlipType.middleFlip,
+                          itemStream:Stream<int>.periodic(const Duration(seconds: 3600), (count) => count * count).take(1000),
+                          itemBuilder: (_, day) => _container(timeLeft![1].toString()),
+                          flipDirection: AxisDirection.down
+                      )
+                  ),
+                  Padding(
+                      padding: const EdgeInsets.only(top: 5.0),
+                      child: FlipWidget(
+                          initialValue: snapshot.data![0],
+                          flipType: FlipType.middleFlip,
+                          itemStream: Stream<int>.periodic(const Duration(seconds: 60), (count) => count * count).take(1000),
+                          itemBuilder: (_, day) => _container(timeLeft![2].toString()),
+                          flipDirection: AxisDirection.down
+                      )
+                  ),
+                  Padding(
+                      padding: const EdgeInsets.only(top: 5.0),
+                      child: FlipWidget(
+                          initialValue: snapshot.data![0],
+                          flipType: FlipType.middleFlip,
+                          itemStream: Stream<int>.periodic(const Duration(seconds: 1), (count) => count * count).take(1000),
+                          itemBuilder: (_, day) => _container(timeLeft![3].toString()),
+                          flipDirection: AxisDirection.down
+                      )
+                  ),
+                ],
+              ),
+            );
+          } else {
+            return CircularProgressIndicator();
+          }
+        }
     );
   }
 
@@ -134,3 +147,4 @@ class _FlipdownclockState extends State<Flipdownclock> {
         ),
       );
 }
+

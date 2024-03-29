@@ -24,14 +24,15 @@ class _NavigationItemHelpState extends State<NavigationItemHelp> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        navKey.currentState!.pushNamed(widget.routeName);
+        //navKey.currentState!.pushNamed(widget.routeName);
+        //Navigator.of(context)!.pushNamed(widget.routeName);
         setState(() {
           showWidget = !showWidget;
         });
       },
       child: Container(
         decoration: BoxDecoration(
-            border: Border.all(color: Colors.blueAccent)
+            //border: Border.all(color: Colors.blueAccent)
         ),
         child: Column(
           crossAxisAlignment : CrossAxisAlignment.end,
@@ -55,22 +56,71 @@ class _NavigationItemHelpState extends State<NavigationItemHelp> {
               ),
             ),
             showWidget ?
-            Column(
-                crossAxisAlignment : CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.end,
-                mainAxisSize: MainAxisSize.max,
-                children :
-                [
-                  NavigationItemHelpSubsection(
-                    title: 'View source code',
-                    routeName: routeHelpSourceCode,
-                  ),
-                  NavigationItemHelpSubsection(
-                    title: 'Base64',
-                    routeName: routeHelpBase64,
-                  ),
-                ]
+            Container(
+              height : 225,
+              child: SingleChildScrollView(
+                child: Column(
+                    crossAxisAlignment : CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisSize: MainAxisSize.max,
+                    children :
+                    [
+                      NavigationItemHelpSubsection(
+                        title: 'PHP',
+                        routeName: routeHelpPhp,
+                      ),
+                      Divider(
+                          color: Color(0xFF424242),
+                          height : 2
+                      ),
+                      NavigationItemHelpSubsection(
+                        title: 'Base64',
+                        routeName: routeHelpBase64,
+                      ),
+                      Divider(
+                          color: Color(0xFF424242),
+                          height : 2
+                      ),
+                      NavigationItemHelpSubsection(
+                        title: 'HTML',
+                        routeName: routeHelpHtml,
+                      ),
+                      Divider(
+                          color: Color(0xFF424242),
+                          height : 2
+                      ),
+                      NavigationItemHelpSubsection(
+                        title: 'CSS',
+                        routeName: routeHelpCss,
+                      ),
+                      Divider(
+                          color: Color(0xFF424242),
+                          height : 2
+                      ),
+                      NavigationItemHelpSubsection(
+                        title: 'JavaScript',
+                        routeName: routeHelpJS,
+                      ),
+                      Divider(
+                          color: Color(0xFF424242),
+                          height : 2
+                      ),
+                      NavigationItemHelpSubsection(
+                        title: 'Routing',
+                        routeName: routeHelpRouting,
+                      ),
+                      Divider(
+                          color: Color(0xFF424242),
+                          height : 2
+                      ),
+                      NavigationItemHelpSubsection(
+                        title: 'SQL injections',
+                        routeName: routeHelpSQLi,
+                      ),
+                    ]
 
+                ),
+              ),
             ) : Container(),
           ],
         ),

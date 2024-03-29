@@ -37,7 +37,7 @@ class _NavigationItemState extends State<NavigationItem> {
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-            border: Border.all(color: Colors.blueAccent)
+            //border: Border.all(color: Colors.blueAccent)
         ),
         child: Center(
           child: Padding(
