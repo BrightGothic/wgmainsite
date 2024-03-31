@@ -11,20 +11,7 @@ class PageTexts {
   );
 
   final Widget base64text = Markdown(
-    //data: "**What is Base64 Encoding?**\n\n- Base64 is a method used to represent binary data (like images, videos, or other files) within an ASCII text format.\n- This makes it possible to transmit or store binary data through channels designed to handle only text, like email or certain web environments.\n\n**Why Do We Need Base64?**\n\n- **Compatibility:** Many systems and protocols are optimized for text. Base64 lets you squeeze binary data into those text-friendly channels.\n- **Integrity:** Base64 can help preserve data during transfers since text-based data tends to be more resilient to corruption compared to raw binary.\n\n**How Base64 Works (simplified)**\n\n1. **Grouping:** Binary data is split into groups of 3 bytes (24 bits).\n2. **Translation:** Each 24-bit group is further divided into four 6-bit groups.\n3. **Mapping:** Each 6-bit group is translated into one of 64 standard Base64 characters (A-Z, a-z, 0-9, +, /, and sometimes = for padding).\n4. **Output:** The translated characters are put together to form the Base64 encoded string.\n\n**Example:**\n\nLet's imagine encoding the word \"Fun\":\n\n1. **Binary conversion:** \"Fun\" is converted to its binary ASCII representation.\n2. **Grouping / Padding:** The binary is grouped into sets of 24 bits, with padding added if needed.\n3. **Splitting:** The 24-bit groups are divided into 6-bit chunks.\n4. **Base64 Mapping:** Each 6-bit group is matched to its Base64 character.\n5. **Result:** The encoded result might look like \"RnVu\".\n\n**Decoding:** Decoding reverses this process to get back the original binary data.\n\n**Key Things to Remember:**\n\n- Base64 increases the size of data by about 33% (due to the encoding overhead).\n- It's not encryption, just a way to represent binary data using text.\n- Base64 is widely used for email attachments, embedding images in HTML, and various other web-related tasks.\n",
-    data :  """
-## Code blocks\n
-Formatted Dart code looks really pretty too:\n
-    ```\n
-    void main() {\n
-      runApp(MaterialApp(\n
-        home: Scaffold(\n
-          body: Markdown(data: markdownData),\n
-        ),\n
-      ));\n
-    }\n
-    ```\n
-""",
+    data: "**What is Base64 Encoding?**\n\n- Base64 is a method used to represent binary data (like images, videos, or other files) within an ASCII text format.\n- This makes it possible to transmit or store binary data through channels designed to handle only text, like email or certain web environments.\n\n**Why Do We Need Base64?**\n\n- **Compatibility:** Many systems and protocols are optimized for text. Base64 lets you squeeze binary data into those text-friendly channels.\n- **Integrity:** Base64 can help preserve data during transfers since text-based data tends to be more resilient to corruption compared to raw binary.\n\n**How Base64 Works (simplified)**\n\n1. **Grouping:** Binary data is split into groups of 3 bytes (24 bits).\n2. **Translation:** Each 24-bit group is further divided into four 6-bit groups.\n3. **Mapping:** Each 6-bit group is translated into one of 64 standard Base64 characters (A-Z, a-z, 0-9, +, /, and sometimes = for padding).\n4. **Output:** The translated characters are put together to form the Base64 encoded string.\n\n**Example:**\n\nLet's imagine encoding the word \"Fun\":\n\n1. **Binary conversion:** \"Fun\" is converted to its binary ASCII representation.\n2. **Grouping / Padding:** The binary is grouped into sets of 24 bits, with padding added if needed.\n3. **Splitting:** The 24-bit groups are divided into 6-bit chunks.\n4. **Base64 Mapping:** Each 6-bit group is matched to its Base64 character.\n5. **Result:** The encoded result might look like \"RnVu\".\n\n**Decoding:** Decoding reverses this process to get back the original binary data.\n\n**Key Things to Remember:**\n\n- Base64 increases the size of data by about 33% (due to the encoding overhead).\n- It's not encryption, just a way to represent binary data using text.\n- Base64 is widely used for email attachments, embedding images in HTML, and various other web-related tasks.\n",
     styleSheet: markdowntheme,
   );
   final Widget csstext = Markdown(
