@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Navigation Bar Web',
       theme: appTheme,
       builder: (BuildContext context, Widget? child) {
-        return AppView(child: child ?? Text("jj"));
+        return AppView(child: child ?? Text("Error"));
       },
       initialRoute: routeHome,
       navigatorKey: navKey,

@@ -15,18 +15,20 @@ class _ScoreboardPageState extends State<ScoreboardPage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: appTheme,
-      home: Scaffold(
-        body: Center(
-          child: Column(
-            crossAxisAlignment :CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                "Scoreboard page",
-              ),
-              Expanded(child: LineChartSample6()),
+      home: SelectionArea(
+        child: Scaffold(
+          body: Center(
+            child: Column(
+              crossAxisAlignment :CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  "Scoreboard page",
+                ),
+                Expanded(child: LineChartSample6()),
 
-            ],
+              ],
+            ),
           ),
         ),
       ),

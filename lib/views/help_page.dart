@@ -17,16 +17,18 @@ class _HelpPageState extends State<HelpPage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: appTheme,
-      home: Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              TimerScreen(),
-              const Text(
-                "Help page",
-              ),
-            ],
+      home: SelectionArea(
+        child: Scaffold(
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                TimerScreen(),
+                const Text(
+                  "Help page",
+                ),
+              ],
+            ),
           ),
         ),
       ),
