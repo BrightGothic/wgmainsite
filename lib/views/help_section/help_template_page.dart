@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:wgmainsite/constants/page_texts.dart';
 import 'package:wgmainsite/widgets/apptheme.dart';
 
@@ -20,7 +21,14 @@ class _HelpSectionState extends State<HelpSection> {
       theme: appTheme,
       home: SelectionArea(
         child: Scaffold(
-          body: PageTexts().returnBodytext(widget.section),
+          body: Column(
+            crossAxisAlignment : CrossAxisAlignment.start,
+            children: [
+              Center(child: Text(PageTexts().returnjson(widget.section)["title"], style : TextStyle(fontSize: 30, fontWeight: FontWeight.bold))),
+              //Expanded(child :  PageTexts().returnjson("php")["markdown"]),
+              Expanded(child: PageTexts().returnjson(widget.section)["markdown"]),
+            ],
+          ),
         ),
       ),
     );

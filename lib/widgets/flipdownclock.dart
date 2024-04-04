@@ -46,7 +46,7 @@ class _FlipdownclockState extends State<Flipdownclock> {
         nextSpecialTime = nextSpecialTime.add(Duration(days: 1));
       }
       //return remainingTimeToText(nextSpecialTime.difference(now));
-      return remainingTimeToText(DateTime(2024, 4, 13).difference(now));
+      return remainingTimeToText(DateTime(2024, 4, 13, 19).difference(now));
     } else {
       return [0,0,0,0];
     }

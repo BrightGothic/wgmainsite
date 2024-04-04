@@ -56,7 +56,7 @@ class _NavigationBarWebState extends State<NavigationBarWeb> {
                       height : 2
                   ),
                   NavigationItem(
-                    title: 'Scoreboard',
+                    title: 'Leaderboard',
                     routeName: routeScoreboard,
                   ),
                 ],
