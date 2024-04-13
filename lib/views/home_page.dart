@@ -113,7 +113,7 @@ class _HomePageState extends State<HomePage> {
                                                       Text('Processing Data')),
                                             );
                                             //password : Deep Blue
-                                            if (md5.convert(utf8.encode(secretbombcontroller.text)).toString() =="2a77bafc75f8851ecb3602c153816c9c") {
+                                            if (md5.convert(utf8.encode(secretbombcontroller.text.toLowerCase().replaceAll(' ',''))).toString() =="6070a201f507660385813969585fdc17") {
                                               setState(() {
                                                 bombstopped = !bombstopped;
                                               });
