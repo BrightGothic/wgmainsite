@@ -16,6 +16,7 @@ class _HomePageState extends State<HomePage> {
   bool showWidget = false;
   bool bombstopped = false;
   final _formKey = GlobalKey<FormState>();
+  Widget alert = Text('');
   TextEditingController secretbombcontroller = TextEditingController();
 
   final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
@@ -111,11 +112,28 @@ class _HomePageState extends State<HomePage> {
                                                   content:
                                                       Text('Processing Data')),
                                             );
-                                            //password : ViVeriVeniversumVivusVici
-                                            if (md5.convert(utf8.encode(secretbombcontroller.text)).toString() =="3e926a1c73256bb284001bdab8e5c265") {
+                                            //password : Deep Blue
+                                            if (md5.convert(utf8.encode(secretbombcontroller.text)).toString() =="2a77bafc75f8851ecb3602c153816c9c") {
                                               setState(() {
                                                 bombstopped = !bombstopped;
                                               });
+                                              showDialog<String>(
+                                                context: context,
+                                                builder: (BuildContext context) => AlertDialog(
+                                                  title: const Text('Congratulations !'),
+                                                  content: const Text('Call +33 7 49 49 37 95 to finish !', style : TextStyle(color : Colors.black)),
+                                                  actions: <Widget>[
+                                                    TextButton(
+                                                      onPressed: () => Navigator.pop(context, 'Cancel'),
+                                                      child: const Text('Cancel'),
+                                                    ),
+                                                    TextButton(
+                                                      onPressed: () => Navigator.pop(context, 'OK'),
+                                                      child: const Text('OK'),
+                                                    ),
+                                                  ],
+                                                ),
+                                              );
                                               ScaffoldMessenger.of(context)
                                                   .showSnackBar(
                                                 const SnackBar(
@@ -136,7 +154,8 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ),
                                   ),
-                                  if (bombstopped) Text("Bomb stopped !") else Text("Bomb working !")
+                                  alert,
+                                  if (bombstopped) Text("Congratulations ! Call +33 07 49 49 37 95 to finish") else Text("Bomb working !")
                                 ],
                               ),
                             ),
